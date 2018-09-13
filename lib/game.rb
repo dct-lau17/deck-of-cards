@@ -13,4 +13,12 @@ class Game
   def shuffle_deck
     deck.shuffle_deck
   end
+
+  def deal(no_of_cards = 7)
+    no_of_cards.times do
+      players.each do |player|
+        player.get_card(deck.deal)
+      end
+    end
+  end
 end

@@ -1,7 +1,8 @@
 require 'game'
 
 RSpec.describe Game do
-  let(:mock_deck) { double(:deck) }
+  let(:card_instance) { double(:card) }
+  let(:mock_deck) { double(:deck, deal: card_instance) }
   let(:mock_player_instance) { double(:player_instance) }
   let(:mock_player_class) { double(:player_class, new: mock_player_instance) }
   subject(:game) { described_class.new(mock_deck, mock_player_class) }
@@ -20,6 +21,13 @@ RSpec.describe Game do
     it 'calls the shuffle method from the deck instance' do
       expect(mock_deck).to receive(:shuffle_deck)
       game.shuffle_deck
+    end
+  end
+
+  describe '#deal' do
+    it 'deals x amount of cards to players' do
+      expect(mock_player_instance).to receive(:get_card).exactly(8).times
+      game.deal(2)
     end
   end
 end

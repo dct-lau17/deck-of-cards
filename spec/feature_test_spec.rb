@@ -2,7 +2,7 @@ require 'game'
 
 RSpec.describe 'Feature Test' do
   subject(:game) { Game.new }
-  let(:sequenced_deck) { Deck.new.cards}
+  let(:sequenced_deck) { Deck.new.cards }
 
   describe '#defaults' do
     it 'initiates with a full deck of cards' do
@@ -21,14 +21,25 @@ RSpec.describe 'Feature Test' do
   end
 
   describe '#shuffle_deck' do
-    before(:each) do
+    it 'can shuffle the deck of cards' do
       game.shuffle_deck
-      @shuffled_deck = show_card_array(game.deck.cards)
-      @original_deck = show_card_array(sequenced_deck)
+      shuffled_deck = show_card_array(game.deck.cards)
+      original_deck = show_card_array(sequenced_deck)
+      expect(shuffled_deck).not_to eq original_deck
+    end
+  end
+
+  describe '#deal' do
+    it 'deals 7 cards to all players' do
+      game.deal
+      expect(game.players[0].hand.length).to eq 7
+      expect(game.players[1].hand.length).to eq 7
+      expect(game.players[2].hand.length).to eq 7
+      expect(game.players[3].hand.length).to eq 7
     end
 
-    it 'can shuffle the deck of cards' do
-      expect(@shuffled_deck).not_to eq @original_deck
+    it 'removes cards from the deck' do
+      expect { game.deal }.to change { game.deck.cards.length }.by(-7 * 4)
     end
   end
 
