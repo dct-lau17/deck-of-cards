@@ -109,8 +109,28 @@
         1,
         null,
         null
+      ],
+      "/Users/DLau/Desktop/KG-ruby/spec/player_spec.rb": [
+        1,
+        null,
+        1,
+        2,
+        null,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/DLau/Desktop/KG-ruby/lib/player.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null
       ]
     },
-    "timestamp": 1536846414
+    "timestamp": 1536847069
   }
 }
