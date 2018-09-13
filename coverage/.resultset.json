@@ -1,0 +1,26 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/DLau/Desktop/KG-ruby/spec/card_spec.rb": [
+        1,
+        null,
+        1,
+        2,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/DLau/Desktop/KG-ruby/lib/card.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1536840299
+  }
+}

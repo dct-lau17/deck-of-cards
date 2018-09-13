@@ -1,0 +1,10 @@
+AllCops:
+  Exclude:
+    - spec/spec_helper.rb
+Documentation:
+    Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - spec/*
+Metrics/LineLength:
+  Max: 85
