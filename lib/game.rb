@@ -9,4 +9,8 @@ class Game
     @players = []
     4.times { players << player_class.new }
   end
+
+  def shuffle_deck
+    deck.shuffle_deck
+  end
 end

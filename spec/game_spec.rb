@@ -12,9 +12,14 @@ RSpec.describe Game do
     end
 
     it 'initiates with 4 players' do
-      p game.players
       expect(game.players.length).to eq 4
     end
   end
 
+  describe '#shuffle_deck' do
+    it 'calls the shuffle method from the deck instance' do
+      expect(mock_deck).to receive(:shuffle_deck)
+      game.shuffle_deck
+    end
+  end
 end
