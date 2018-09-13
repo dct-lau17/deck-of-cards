@@ -5,4 +5,8 @@ class Card
     @value = value
     @suit = suit
   end
+
+  def show_card
+    [value, suit].join(' of ')
+  end
 end
