@@ -27,4 +27,11 @@ RSpec.describe Deck do
       expect(deck.cards).not_to equal @original_deck
     end
   end
+
+  describe '#deal' do
+    it 'removes a card from the deck' do
+      deck.deal
+      expect(deck.cards.length).to eq 4
+    end
+  end
 end
