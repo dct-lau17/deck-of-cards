@@ -8,19 +8,24 @@ class Deck
 
   SUITS = %w[Hearts Clubs Spades Diamonds].freeze
 
-  def initialize
-    @cards = []
-    generate_cards
+  def initialize(cards = generate_cards)
+    @cards = cards
+  end
+
+  def shuffle_deck
+    cards.shuffle!
   end
 
   private
 
   def generate_cards
+    deck = []
     SUITS.each do |suit|
       VALUE.each do |value|
         card = Card.new(value, suit)
-        cards << card
+        deck << card
       end
     end
+    deck
   end
 end
