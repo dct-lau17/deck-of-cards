@@ -2,8 +2,10 @@ require 'player'
 
 RSpec.describe Player do
   subject(:player) { described_class.new }
-  
-  it 'has an array to store the players hand' do
-    expect(player.hand).to eq []
+
+  it 'can add a card to the players hand' do
+    card = 'Ace of Hearts'
+    player.get_card(card)
+    expect(player.hand).to include card
   end
 end

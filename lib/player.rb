@@ -4,4 +4,8 @@ class Player
   def initialize
     @hand = []
   end
+
+  def get_card(card)
+    hand << card
+  end
 end
