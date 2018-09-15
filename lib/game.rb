@@ -4,10 +4,10 @@ require_relative 'player.rb'
 class Game
   attr_reader :players, :deck
 
-  def initialize(deck = Deck.new, player_class = Player)
+  def initialize(deck = Deck.new, players = [])
     @deck = deck
-    @players = []
-    4.times { players << player_class.new }
+    @players = players
+    4.times { players << Player.new } if players.empty?
   end
 
   def shuffle_deck
@@ -19,6 +19,14 @@ class Game
       players.each do |player|
         player.get_card(deck.deal)
       end
+    end
+  end
+
+  def show_all_hands
+    players.each_with_index do |player, index|
+      puts "Player #{index + 1} hand"
+      puts player.show_hand
+      puts '----------'
     end
   end
 end

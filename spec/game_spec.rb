@@ -3,9 +3,7 @@ require 'game'
 RSpec.describe Game do
   let(:card_instance) { double(:card) }
   let(:mock_deck) { double(:deck, deal: card_instance) }
-  let(:mock_player_instance) { double(:player_instance) }
-  let(:mock_player_class) { double(:player_class, new: mock_player_instance) }
-  subject(:game) { described_class.new(mock_deck, mock_player_class) }
+  subject(:game) { described_class.new(mock_deck) }
 
   describe '#default' do
     it 'has a deck of cards' do
@@ -25,9 +23,33 @@ RSpec.describe Game do
   end
 
   describe '#deal' do
-    it 'deals x amount of cards to players' do
-      expect(mock_player_instance).to receive(:get_card).exactly(8).times
+    it 'can deals 2 cards to players' do
+      player1 = double(:player)
+      players_array = [player1]
+      game = Game.new(mock_deck, players_array)
+      expect(game.players[0]).to receive(:get_card).exactly(2).times
       game.deal(2)
+    end
+
+    it 'deals 7 cards to players by default' do
+      game = Game.new(mock_deck)
+      expect(game.players[0]).to receive(:get_card).exactly(7).times
+      game.deal
+    end
+  end
+
+  describe '#show_all_hands' do
+    it 'prints out all players hands' do
+      player_hand = ['Ace of Diamonds', 'Queen of Hearts']
+      player1 = double(:player, show_hand: player_hand)
+      players_array = [player1]
+      game = Game.new(mock_deck, players_array)
+      player_header = 'Player 1 hand'
+      end_of_hand = '----------'
+      expect(STDOUT).to receive(:puts).with(player_header)
+      expect(STDOUT).to receive(:puts).with(player_hand)
+      expect(STDOUT).to receive(:puts).with(end_of_hand)
+      game.show_all_hands
     end
   end
 end
