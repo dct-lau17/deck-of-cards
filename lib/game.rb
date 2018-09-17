@@ -30,3 +30,8 @@ class Game
     end
   end
 end
+
+game = Game.new
+game.shuffle_deck
+game.deal
+game.show_all_hands

@@ -32,6 +32,13 @@ RSpec.describe 'Feature Test' do
       original_deck = show_card_array(sequenced_deck)
       expect(shuffled_deck).not_to eq original_deck
     end
+
+    it 'shuffles cards so there are no consecutive cards in sequence' do
+      game.shuffle_deck
+      shuffled_deck = show_card_array(game.deck.cards)
+      original_deck = show_card_array(sequenced_deck)
+      expect(shuffled_deck).not_to eq original_deck
+    end
   end
 
   describe '#deal' do

@@ -9,10 +9,10 @@ RSpec.describe Deck do
   end
 
   before(:each) do
-    card1 = double(:card, value: 'Ten', suit: 'Hearts', show_card: 'Ten of Heart')
-    card2 = double(:card, value: 'Jack', suit: 'Hearts', show_card: 'Jack of Heart')
-    card3 = double(:card, value: 'Queen', suit: 'Hearts', show_card: 'Queen of Heart')
-    card4 = double(:card, value: 'King', suit: 'Hearts', show_card: 'King of Heart')
+    card1 = double(:card, value: 'Ten', suit: 'Hearts', show_card: 'Ten of Hearts')
+    card2 = double(:card, value: 'Jack', suit: 'Hearts', show_card: 'Jack of Hearts')
+    card3 = double(:card, value: 'Queen', suit: 'Hearts', show_card: 'Queen of Hearts')
+    card4 = double(:card, value: 'King', suit: 'Hearts', show_card: 'King of Hearts')
     card5 = double(:card, value: 'Ace', suit: 'Clubs', show_card: 'Ace of Clubs')
     mock_cards = [card1, card2, card3, card4, card5]
     @deck = described_class.new(mock_cards)
@@ -23,6 +23,15 @@ RSpec.describe Deck do
   describe '#shuffle' do
     it 'shuffles the deck of cards' do
       expect(@deck.cards).not_to equal @original_deck
+    end
+
+    it 'does not deal a card with consecutive values of the same suit' do
+      @deck.cards.each_index do |index|
+        next if index < @deck.cards.length
+
+        expect(@deck.cards[index + 1].show_card)
+          .not_to eq(@original_cards[index + 1].show_card)
+      end
     end
   end
 
