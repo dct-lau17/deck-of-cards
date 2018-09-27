@@ -22,7 +22,7 @@ Deal the cards - We would then like to deal seven cards to each player (one card
 
 Open terminal and navigate to directory
 ```
-cd kg-cards
+cd deck-of-cards
 ```
 Install dependencies
 ```

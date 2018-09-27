@@ -27,8 +27,11 @@ RSpec.describe Deck do
 
     it 'does not deal a card with consecutive values of the same suit' do
       card_ten = @deck.cards.index(@card1)
-      card_king = @deck.cards.index(@card4)
       expect(card_ten + 1).not_to equal @card2
+    end
+
+    it 'does not deal a card with consecutive values when card is king' do
+      card_king = @deck.cards.index(@card4)
       expect(card_king + 1).not_to equal @card5
     end
   end
