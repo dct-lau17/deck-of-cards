@@ -1,4 +1,4 @@
-# Kurt Geiger Tech Test: Deck of Cards App - Daniel Lau
+# Deck of Cards App - Daniel Lau
 
 ## Overview
 
